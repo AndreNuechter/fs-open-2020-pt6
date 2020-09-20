@@ -3,18 +3,18 @@ const initialState = {
     ok: 0,
     bad: 0
 };
+const incrementProp = (state, key) => ({ ...state, [key]: state[key] + 1 });
 
 export default (state = initialState, action) => {
-    console.log(action);
     switch (action.type) {
         case 'GOOD':
-            return state;
+            return incrementProp(state, 'good');
         case 'OK':
-            return state;
+            return incrementProp(state, 'ok');
         case 'BAD':
-            return state;
+            return incrementProp(state, 'bad');
         case 'ZERO':
-            return state;
+            return { ...initialState };
         default:
             return state;
     }
