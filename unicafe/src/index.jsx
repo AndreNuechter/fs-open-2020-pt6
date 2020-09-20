@@ -5,13 +5,12 @@ import reducer from './reducer';
 
 const store = createStore(reducer);
 const handlerFactory = type => () => store.dispatch({ type });
+const good = handlerFactory('GOOD');
+const ok = handlerFactory('OK');
+const bad = handlerFactory('BAD');
+const zero = handlerFactory('ZERO');
 
 const App = () => {
-    const good = handlerFactory('GOOD');
-    const ok = handlerFactory('OK');
-    const bad = handlerFactory('BAD');
-    const zero = handlerFactory('ZERO');
-
     return (
         <div>
             <button onClick={good}>good</button>
