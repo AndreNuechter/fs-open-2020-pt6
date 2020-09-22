@@ -16,19 +16,18 @@ const asObject = (anecdote) => {
 };
 const initialState = anecdotesAtStart.map(asObject);
 
-export default (state = initialState, action) => {
-    switch (action.type) {
+export default (state = initialState, { type, data }) => {
+    switch (type) {
         case 'VOTE':
             return state.map((anecdote) => {
-                if (anecdote.id === action.data.id) return { ...anecdote, votes: anecdote.votes + 1 };
+                if (anecdote.id === data.id) return { ...anecdote, votes: anecdote.votes + 1 };
                 return anecdote;
             });
         case 'CREATE':
-            return [...state, asObject(action.data)];
+            return [...state, asObject(data)];
         default:
             return state;
     }
 };
-
-export const vote = (id) => ({ type: 'VOTE', data: { id } });
+export const vote = (id, content) => ({ type: 'VOTE', data: { id, content } });
 export const create = (data) => ({ type: 'CREATE', data });

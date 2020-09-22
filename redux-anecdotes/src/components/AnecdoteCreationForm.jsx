@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { create } from './reducers/anecdoteReducer.js';
+import { create } from '../reducers/anecdoteReducer.js';
 
 export default () => {
     const dispatch = useDispatch();
@@ -13,11 +13,9 @@ export default () => {
         event.preventDefault();
     };
 
-    return <>
-        <h2>create new</h2>
-        <form onSubmit={createAnecdote}>
-            <div><input name="anecdote" /></div>
-            <button>create</button>
-        </form>
-    </>;
+    return <form onSubmit={createAnecdote}>
+        <h2>Add a new anecdote</h2>
+        <div><input name="anecdote" /></div>
+        <button>Add</button>
+    </form>;
 };
