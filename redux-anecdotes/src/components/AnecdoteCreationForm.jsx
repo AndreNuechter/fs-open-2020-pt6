@@ -13,7 +13,7 @@ export default () => {
         event.preventDefault();
     };
 
-    return <form onSubmit={createAnecdote}>
+    return <form className="anecdote__creation-form" onSubmit={createAnecdote}>
         <h2>Add a new anecdote</h2>
         <div><input name="anecdote" /></div>
         <button>Add</button>

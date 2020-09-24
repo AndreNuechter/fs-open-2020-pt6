@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { init } from './reducers/anecdoteReducer.js';
-import dbService from './services/db.js';
 import AnecdoteList from './components/AnecdoteList.jsx';
 import AnecdoteCreationForm from './components/AnecdoteCreationForm.jsx';
 import Notification from './components/Notification.jsx';
@@ -12,7 +11,7 @@ export default () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dbService.getAll().then(data => dispatch(init(data)));
+        dispatch(init());
     }, [dispatch]);
 
     return (
@@ -20,8 +19,8 @@ export default () => {
             <h1>Anecdotes</h1>
             <Notification />
             <AnecdoteFilter />
-            <AnecdoteList />
             <AnecdoteCreationForm />
+            <AnecdoteList />
         </div>
     );
 };

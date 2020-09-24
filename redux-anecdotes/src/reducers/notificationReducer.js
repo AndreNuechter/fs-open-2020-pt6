@@ -3,7 +3,7 @@ export default (state = '', { type, data }) => {
         case 'VOTE':
             return `You voted for "${data.content}"`;
         case 'CREATE':
-            return `You created "${data}"`;
+            return `You created "${data.content}"`;
         case 'HIDE':
             return '';
         default:

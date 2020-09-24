@@ -7,15 +7,8 @@ export default () => {
     const filterAnecdote = ({ target: { value } }) => {
         dispatch(update(value));
     };
-    const style = {
-        display: 'block',
-        borderBottom: '1px dashed grey',
-        paddingBottom: '8px',
-        marginBottom: '8px',
-        textAlign: 'center'
-    };
 
-    return <label style={style}>
+    return <label className="anecdote__filter">
         <span>Filter:</span>
         <input onChange={filterAnecdote} />
     </label>;

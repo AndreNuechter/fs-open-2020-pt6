@@ -1,33 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { hide } from '../reducers/notificationReducer.js';
 
+let timeoutId;
+
 export default () => {
-    const [timeoutId, setTimeoutId] = useState(null);
     const dispatch = useDispatch();
     const notification = useSelector(({ notification }) => notification);
-    const style = {
-        padding: 10,
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        background: 'white',
-        width: '100%'
-    };
 
     useEffect(
         () => {
             if (timeoutId) clearTimeout(timeoutId);
 
-            setTimeoutId(setTimeout(() => {
+            timeoutId = setTimeout(() => {
                 dispatch(hide());
-                setTimeoutId(null);
-            }, 5000));
-            // eslint-disable-next-line
-        }, [notification]
+                timeoutId = null;
+            }, 5000);
+        }, [notification, dispatch]
     );
 
-    return <div style={style}>
+    return <div className="notification">
         {notification}
     </div>;
 };

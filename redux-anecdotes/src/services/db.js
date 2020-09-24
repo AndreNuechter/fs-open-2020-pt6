@@ -14,5 +14,15 @@ export default {
             body: JSON.stringify(data)
         });
         return await response.json();
+    },
+    async putVote(data) {
+        const response = await fetch(`${baseUrl}/${data.id}`, {
+            method: 'put',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+        return await response.json();
     }
 };

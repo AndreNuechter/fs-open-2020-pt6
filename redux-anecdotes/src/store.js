@@ -1,4 +1,5 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import anecdoteReducer from './reducers/anecdoteReducer';
 import anecdoteFilterReducer from './reducers/anecdoteFilterReducer';
@@ -10,5 +11,5 @@ export default createStore(
         filter: anecdoteFilterReducer,
         notification: notificationReducer
     }),
-    composeWithDevTools()
+    composeWithDevTools(applyMiddleware(thunk))
 );
